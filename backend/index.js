@@ -27,12 +27,6 @@ app.use("/api/users", userRoute);
 app.use(paymentRoute);
 app.use("/api/feed", feedRoute)
 app.use(ordersRoute);
-// app.get("/", (req, res, next) => {
-//   console.log("index route ");
-//   res.status(200).json({
-//     status: "success",
-//   });
-// });
 
 app.use(express.static(path.join(__dirname, '../frontend/build')));
 
@@ -44,7 +38,10 @@ app.get("*", function (req, res) {
   console.log("404 - ");
   res.send("404");
 });
-
 const PORT = process.env.PORT || 5000;
-
+mongoose
+    .connect("mongodb+srv://project:project!234@cluster0.cpznysb.mongodb.net/happyplace?retryWrites=true&w=majority")
+    .then((res) => {
+      app.listen(PORT);
+    })
 module.exports = app;
