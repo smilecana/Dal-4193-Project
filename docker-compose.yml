@@ -1,38 +1,36 @@
 version: '3.7'
-
 services:
   server:
-    build:
-      context: ./server
-      dockerfile: Dockerfile
-    image: myapp-server
+    # build:
+      # context: ./backend
+      # dockerfile: Dockerfile
+    image: node-app
     container_name: myapp-node-server
-    command: /usr/src/app/node_modules/.bin/nodemon server.js
-    volumes:
-      - ./server/:/usr/src/app
-      - /usr/src/app/node_modules
+    command: /backend/node_modules/.bin/nodemon server.js
     ports:
       - "5000:5000"
-    env_file: ./server/.env
     environment:
       - NODE_ENV=development
+      - MONGODB_CONNECTION_STRING=$MONGODB_STRING
     networks:
-      - app-network
+      - backend
+      - frontend
+
   client:
-    build:
-      context: ./client
-      dockerfile: Dockerfile
-    image: myapp-client
-    container_name: myapp_react-client
+    # build:
+      # context: ./frontend
+      # dockerfile: Dockerfile
+    image: react-app
+    container_name: myapp-react-client
     command: npm start
-    volumes:
-      - ./client/:/usr/app
-      - /usr/app/node_modules
     depends_on:
       - server
     ports:
       - "3000:3000"
     networks:
-      - app-network
+      - frontend
 
+networks:
+  backend:
+  frontend:
 

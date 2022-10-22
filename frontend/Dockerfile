@@ -3,13 +3,14 @@
 FROM node:16 as build-stage
 
 # Working directory be app
-WORKDIR /usr/src/app
+WORKDIR /frontend
 
 #Copies the package.json file into "/server" and runs npm i
 COPY package.json ./
 
 ### Installing dependencies
-RUN npm install --silent
+RUN npm cache clean --force
+RUN npm install
 
 # copy local files to app folder
 COPY . .

@@ -3,13 +3,12 @@
 FROM node:16 as build-stage
 
 # Create App directory
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
+WORKDIR /backend
 
 # Install Dependencies
 COPY package*.json ./
 
-RUN npm install --silent
+RUN npm install
 
 # Copy app source code
 COPY . .
