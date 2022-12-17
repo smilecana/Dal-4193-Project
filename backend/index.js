@@ -40,7 +40,7 @@ app.get("*", function (req, res) {
 });
 const PORT = process.env.PORT || 5000;
 mongoose
-    .connect(process.env.MONGODB_CONNECTION_STRING)
+    .connect('mongodb+srv://project:project!234@cluster0.cpznysb.mongodb.net/happyplace?retryWrites=true&w=majority')
     .then((res) => {
       app.listen(PORT);
     })

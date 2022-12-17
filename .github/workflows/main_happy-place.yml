@@ -3,16 +3,22 @@
 
 name: Build and deploy Node.js app to Azure Web App - happy-place
 
+# workflow가 언제 동작할지 정의한다.
+# 이 workflow의 경우 main branch에 push 또는 pull_request 이벤트가 발생할 경우 동작한다.
 on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
   workflow_dispatch:
 
+#job은 사용자가 정한 플랫폼을 통해 step이라는 일련의 과정을 실행할 수 있다.
+# 여러 개의 job을 사용할 수 있고, job끼리 정보 교환도 가능하다.
 jobs:
   build:
-    runs-on: ubuntu-latest
-
+    runs-on: ubuntu-latest #Job이 실행될 환경을 정의한다.
     steps:
       - uses: actions/checkout@v2
       - name: Set up Node.js version
