@@ -22,6 +22,7 @@ jobs:
 
       - name: client install and build
         run: |
+          unset CI
           npm run client-install
           npm run client-build
 
