@@ -15,15 +15,20 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-
       - name: Set up Node.js version
         uses: actions/setup-node@v1
         with:
           node-version: '18.x'
 
-      - name: npm install
+      - name: client install and build
+        run: |
+          npm run client-install
+          npm run client-build
+
+      - name: npm install and build
         run: |
           npm install
+          npm build --if-present
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
