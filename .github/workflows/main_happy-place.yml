@@ -46,12 +46,24 @@ jobs:
         with:
           name: node-app
           path: ./backend
-      
-      - name: 'Deploy to Azure Web App'
-        uses: azure/webapps-deploy@v2
-        id: deploy-to-webapp
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: 'production'
+      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+
+    steps:
+      - name: Download artifact from build job
+        uses: actions/download-artifact@v2
         with:
-          app-name: ${{ env.AZURE_WEAPP_NAME }}
-          slot-name: 'Production'
-          publish-profile: ${{ secrets.AzureAppService_PublishProfile_2e8bf941eaca4b70926a7c75cf6d1a69 }}
-          package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+          name: node-app
+
+      - name: 'Deploy to Azure Web App'
+        id: deploy-to-webapp
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: 'mern-webapp'
+          slot-name: 'production'
+          publish-profile: ${{ secrets.AzureAppService_PublishProfile_6f4f5f6a31eb40fcb01add541d232cbd }}
+          package: .
