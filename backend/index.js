@@ -33,8 +33,7 @@ app.use(express.static(path.join(__dirname, '../frontend/build')));
 app.get('/*',function(req, res){
   res.sendFile(path.join(__dirname, '../frontend/build','index.html'));
 })
-console.log('__dirname', __dirname);
-console.log('filename', __filename);
+console.log(__dirname);
 
 app.get("*", function (req, res) {
   console.log("404 - ");
