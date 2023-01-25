@@ -29,10 +29,13 @@ app.use("/api/feed", feedRoute)
 app.use(ordersRoute);
 
 // Serve Static assests if in production
-app.use(path.join(__dirname, '../frontend/build')); // change this if your dir structure is different
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, '/frontend/build'));  
-});
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, '../frontend/build')));
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/build'));  
+  });
+}
+
 
 app.get("*", function (req, res) {
   console.log("404 - ");
