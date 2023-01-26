@@ -9,7 +9,7 @@
     "start": "nodemon ./backend/index.js",
     "server-install": "cd backend && npm install",
     "server-build": "cd backend && npm start",
-    "client-install" : "cd frontend && npm install",
+    "client-install": "cd frontend && npm install",
     "client-build": "cd frontend && npm run build"
   },
   "repository": {
@@ -31,7 +31,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.2.9",
     "nodemailer": "^6.7.3",
-    "nodemon": "^2.0.15",
+    "nodemon": "^2.0.20",
     "passport": "^0.5.2",
     "passport-jwt": "^4.0.0",
     "stripe": "^8.215.0",
