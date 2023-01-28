@@ -39,9 +39,10 @@ app.get("*", function (req, res) {
   console.log("404 - ");
   res.send("404");
 });
+
 const PORT = process.env.PORT || 5000;
 mongoose
-    .connect('mongodb+srv://project:project!234@cluster0.cpznysb.mongodb.net/happyplace?retryWrites=true&w=majority')
+    .connect('mongodb+srv://project:project!234@cluster0.cpznysb.mongodb.net/?retryWrites=true&w=majority')
     .then((res) => {
       app.listen(PORT);
     })
