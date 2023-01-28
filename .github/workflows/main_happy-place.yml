@@ -28,13 +28,14 @@ jobs:
 
       - name: server install and build
         run: |
+          unset CI
           npm run server-install
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
           name: node-app
-          path: ./backend
+          path: .
 
   deploy:
     runs-on: ubuntu-latest
