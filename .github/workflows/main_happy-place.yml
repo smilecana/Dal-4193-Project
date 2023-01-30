@@ -20,12 +20,15 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: '18.x'
+          
       - name: npm install
         run: |
           npm install
           npm audit fix --force
           
       - name: client install
+        env:
+          CI: false
         run: |
           npm run client-install
           npm run client-build
