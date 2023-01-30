@@ -27,7 +27,7 @@ jobs:
           
       - name: client install
         run: |
-          CI=false npm run client-install
+          npm run client-install
           npm run client-build
 
       - name: server install
