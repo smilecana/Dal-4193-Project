@@ -17,7 +17,6 @@ import Typography from "@mui/material/Typography";
 import { toast } from "react-toastify";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import axios_api from "../../../common/axios";
 import jwtDecode from "jwt-decode";
 import { AppContext } from "../../../context/userContext";
 import * as ActionTypes from "../../../common/actionTypes";
@@ -26,7 +25,7 @@ import { ROUTES } from "../../../common/constants";
 import axios from 'axios';
 const Login = () => {
   const {
-    state: { authenticated, currentUser, userId, authToken },
+    state: { authenticated },
     dispatch,
   } = useContext(AppContext);
   let navigate = useNavigate();
@@ -41,7 +40,7 @@ const Login = () => {
     if (authenticated) {
       navigate(ROUTES.HOMEPAGE);
     }
-  }, [authenticated]);
+  }, []);
   const onSubmit = (data) => {
     const { email, password } = data;
     const loginCredentials = { email, password };

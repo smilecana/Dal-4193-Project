@@ -20,6 +20,7 @@ const Feed = () => {
     if (!authenticated) {
         navigate(ROUTES.HOMEPAGE);
     }
+
     useEffect(() => {
         if (!authenticated) {
             navigate(ROUTES.HOMEPAGE);
@@ -29,7 +30,8 @@ const Feed = () => {
                 if (response.data.success)
                     setFeedList(response.data.feeds);
             })
-    }, []);
+    },[]);
+
     const handleClick = (label, id) => {
         const data = {'badge' : label }
         axios.put(`/api/feed/${id}`,data,{headers: {
@@ -42,7 +44,7 @@ const Feed = () => {
                 }
             })
     };
-    const handleClose = (event, reason) => {
+    const handleClose = (reason) => {
         if (reason === "clickaway") {
             return;
         }

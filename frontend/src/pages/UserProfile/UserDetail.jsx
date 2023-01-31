@@ -11,7 +11,7 @@ import HistoryIcon from '@mui/icons-material/History';
 import Groups from "../../Components/Groups";
 import group from "./dump"
 import UserFeeds from "../../Components/UserFeeds";
-import {useContext, useState} from "react";
+import {useContext} from "react";
 import {AppContext} from "../../context/userContext";
 
 function TabPanel(props) {
@@ -49,7 +49,7 @@ function a11yProps(index) {
 
 export default function UserDetail() {
     const {
-        state: { authenticated, currentUser },
+        state: { currentUser },
     } = useContext(AppContext);
 
     const [value, setValue] = React.useState(0);

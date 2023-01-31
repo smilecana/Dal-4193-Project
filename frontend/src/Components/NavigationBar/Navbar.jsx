@@ -7,11 +7,8 @@ import {
   Typography,
   Menu,
   Container,
-  Avatar,
   Button,
-  Tooltip,
   MenuItem,
-  Divider,
 } from "@mui/material";
 import { AppContext } from "../../context/userContext";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -26,32 +23,17 @@ const Navbar = () => {
   } = useContext(AppContext);
   let navigate = useNavigate();
   const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
-    console.log(event);
     setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
   };
 
   const handleCloseNavMenu = () => {
-    console.log("test");
     setAnchorElNav(null);
   };
 
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
 
   return (
     <AppBar position="static" style={{ background: "#ffffff" }}>
@@ -59,7 +41,7 @@ const Navbar = () => {
         <Toolbar disableGutters>
           <Box noWrap sx={{ mr: 2, display: { xs: "none", md: "flex" } }}>
             <img
-              onClick={(event) => navigate(ROUTES.HOMEPAGE)}
+              onClick={() => navigate(ROUTES.HOMEPAGE)}
               height={44}
               width={104}
               src={Logo}
@@ -113,7 +95,7 @@ const Navbar = () => {
               aria-controls={open ? "basic-menu" : undefined}
               aria-haspopup="true"
               aria-expanded={open ? "true" : undefined}
-              onClick={(handleClick) => navigate(ROUTES.LIST)}
+              onClick={() => navigate(ROUTES.LIST)}
               sx={{ my: 2, color: "black", display: "block" }}
             >
               Book Professionals
@@ -125,7 +107,7 @@ const Navbar = () => {
               aria-controls={open ? "basic-menu" : undefined}
               aria-haspopup="true"
               aria-expanded={open ? "true" : undefined}
-              onClick={(handleClick) => navigate(ROUTES.FEED)}
+              onClick={() => navigate(ROUTES.FEED)}
               sx={{ my: 2, color: "black", display: "block" }}
             >
               Feed

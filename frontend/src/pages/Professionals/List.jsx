@@ -20,7 +20,7 @@ import { useContext } from "react";
 function List() {
 
   const {
-    state: { authenticated, currentUser },
+    state: { authenticated },
   } = useContext(AppContext);
     let navigate = useNavigate();
     const [list, setList] = useState([]);

@@ -12,8 +12,7 @@ const Logout = () => {
   useEffect(() => {
     dispatch({ type: ActionTypes.LOGOUT });
     navigate(ROUTES.HOMEPAGE);
-  }, []);
-
+  });
   return <div />;
 };
 

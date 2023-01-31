@@ -10,10 +10,10 @@ import { AppContext } from "../../context/userContext";
 
 const UserProfile = () => {
   const {
-    state: { authenticated, currentUser },
+    state: { currentUser },
   } = useContext(AppContext);
 
-  const [user, setUser] = useState();
+  const [user, setUser] = useState({currentUser});
   const [open, setOpen] = useState(false);
   const handleSubmit = () => {
     // Object.keys(user).map((item) => {
@@ -35,7 +35,7 @@ const UserProfile = () => {
   };
 
   return (
-    <>
+    <div>
       <Box
         display="flex"
         justifyContent="center"
@@ -75,7 +75,7 @@ const UserProfile = () => {
             id="outlined-multiline-flexible"
             defaultLabel="BIO"
             name="bio"
-            value=""
+            value=''
             onChange={handleChange}
           />
         </Grid>
@@ -97,7 +97,7 @@ const UserProfile = () => {
           User Information Updated!
         </Alert>
       </Snackbar>
-    </>
+    </div>
   );
 };
 

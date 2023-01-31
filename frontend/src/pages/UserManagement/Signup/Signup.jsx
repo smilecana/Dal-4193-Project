@@ -17,7 +17,6 @@ import { useNavigate } from "react-router-dom";
 import { AppContext } from "../../../context/userContext";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { toast } from "react-toastify";
-import axios_api from "../../../common/axios";
 import { ROUTES } from "../../../common/constants";
 import axios from 'axios';
 const Signup = () => {
@@ -39,7 +38,7 @@ const Signup = () => {
       // toast.info("You are already Authenticated");
       navigate(ROUTES.HOMEPAGE);
     }
-  }, [authenticated]);
+  }, []);
   const onSubmit = (data) => {
     const { firstName, lastName, email, password, confirmPassword } = data;
     const registrationDetails = {

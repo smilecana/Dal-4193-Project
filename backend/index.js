@@ -11,7 +11,7 @@ const app = express();
 const path = require("path");
 const feedRoute = require("./routes/feeds")
 
-dotenv.config();
+dotenv.config({path: '../.env'});
 
 app.use(cors());
 
@@ -40,9 +40,10 @@ app.get("*", function (req, res) {
 });
 
 const PORT = process.env.PORT || 5000;
+mongoose.set("strictQuery", false);
 mongoose
-    .connect('mongodb+srv://project:project!234@cluster0.cpznysb.mongodb.net/?retryWrites=true&w=majority')
-    .then((res) => {
+    .connect(process.env.MONGODB_CONNECTION_STRING)
+    .then(() => {
       app.listen(PORT);
     })
 module.exports = app;

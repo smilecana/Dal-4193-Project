@@ -42,4 +42,4 @@
 - Update feed
 
 ## Sample test user credentials
-- user123@gmail.com/User@123
+- user123@gmail.com/User!234

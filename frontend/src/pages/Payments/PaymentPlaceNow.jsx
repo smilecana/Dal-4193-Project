@@ -18,9 +18,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import axios from 'axios';
 import './Payments.css';
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 // import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 //  import 'bootstrap/dist/css/bootstrap.min.css';
@@ -52,9 +50,7 @@ let paymentMethodType = "Credit/Debit Card";
     
     let userDetails ;
     let bookingDetails=("bookingDetails" in localStorage?JSON.parse(localStorage.getItem("bookingDetails")):"");
-    let charges;
-    const [toggle,setToggle] = useState(0);
-    
+    let charges;    
     
     const buttonStyle = useStyles();
     let authToken = "";
@@ -67,13 +63,6 @@ let paymentMethodType = "Credit/Debit Card";
      //     dispatch(paymentType(event.target.value));
      // }
     
-    
-    
-     
-     
-     
- 
-     console.log("togggle",props.checkBillingAddress)
      async function handlePlaceOrderBtn(){
         if("userDetails" in localStorage){
             userDetails = JSON.parse(localStorage.getItem("userDetails"));
@@ -130,7 +119,6 @@ let paymentMethodType = "Credit/Debit Card";
                 zipCode
             };
         }else{
-            console.log("inside secodn");
             let firstName = userDetails.firstName;
             let lastName = userDetails.lastName;
             let streetAddress = userDetails.streetAddress;
@@ -169,60 +157,7 @@ let paymentMethodType = "Credit/Debit Card";
              });
          }
      }
-
-     
-    
-     // console.log(paymentMethodType);
    return (
-    //  <Card className="textFont" >
-    //      <Card.Header className="text-center" ><h4 >Payment Methods</h4></Card.Header>
-    //      <Card.Body >
-    //          <Card.Title style={{textAlign: 'left'}}>Chose your payment method</Card.Title>
-    //          <Card.Title>
-    //              <Box component="span" sx={{ display: 'block', mt:2 }}>
-    //                  <FormControl>
-    //                      <RadioGroup
-    //                          aria-labelledby="demo-radio-buttons-group-label"
-    //                          defaultValue="Credit/Debit Card"
-    //                          name="radio-buttons-group" 
-    //                      >
-    //                          <FormControlLabel value="Credit/Debit Card" control={<Radio 
-                             
-    //                          sx={{
-    //                              color: blue[800],
-    //                              '&.Mui-checked': {
-    //                              color: blue[600],
-    //                          },
-    //                          }}
-    //                          />} label="Credit/Debit Card" />
-    //                          <FormControlLabel value="Paypal" control={<Radio 
-                             
-    //                          sx={{
-    //                              color: blue[800],
-    //                              '&.Mui-checked': {
-    //                              color: blue[600],
-    //                          },
-    //                          }} disabled={true}
-    //                          />} label="Paypal (Currently Not Avaialble)" />
-                     
-                             
-    //                      </RadioGroup>
-    //                  </FormControl>
- 
- 
-    //              </Box>
-    //          </Card.Title>
-    //      </Card.Body>
-    //      <Card.Footer>
-             
-    //          <Card.Title style={{textAlign: 'left'}}>Total Amount <span style={{float: "right"}}>Amount</span></Card.Title>
-             
-    //      </Card.Footer>
-    //      <Button variant="contained" className={buttonStyle.root}
-    //      onClick={handlePlaceOrderBtn} >Place Order</Button>
-    //      {/* <Button variant="primary" className="placeButton" onClick={() => handleNewButton()}>Place Order</Button> */}
-    //  </Card>
-
         <Card  >
             <CardContent sx={{ p: 0 }}>
               <Typography gutterBottom variant="h5" component="div" style={{backgroundColor: '#1f9264', color: '#fff',display: 'flex', 
