@@ -19,24 +19,13 @@ jobs:
       - name: Set up Node.js version
         uses: actions/setup-node@v1
         with:
-          node-version: '18.x'
-          
-      - name: npm install
+          node-version: '16.x'
+
+      - name: npm install, build, and test
         run: |
           npm install
-          npm audit fix --force
-          
-      - name: client install
-        env:
-          CI: false
-        run: |
-          npm run client-install
-          npm run client-build
-
-      - name: server install
-        run: |
-          npm run server-install
-
+          npm run build --if-present
+          npm run test --if-present
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
@@ -63,5 +52,5 @@ jobs:
         with:
           app-name: 'happy-place'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_F2ED914868AB4E25BF48928C3A524F9D }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_3D9C3D38BA0342708637B589FF20AB4D }}
           package: .
